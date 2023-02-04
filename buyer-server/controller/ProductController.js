@@ -3,7 +3,7 @@ const { product } = require("../models/Product")
 
 const productController={
     getAll:(req,res)=>{
-        product.find({},function(err,docs){
+        product.find({isDeleted:false}).populate('categoryId').populate({pat}).exec((err,docs)=>{
             if(!err){
                 res.json(docs)
             }else{

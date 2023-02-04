@@ -7,6 +7,7 @@ const productRouter= require('./routes/ProductRouter')
 const buyerRouter= require('./routes/buyerRouter')
 const categoryRouter= require('./routes/categoryRouter')
 const addressRouter=require('./routes/AddressRouter')
+const userRouter=require('./routes/UserRouter')
 const app=express()
 
 const PORT = process.env.POST || 3000;
@@ -40,5 +41,6 @@ app.use('/api/product',productRouter)
 app.use('/api/buyer',buyerRouter)
 app.use('/api/category',categoryRouter)
 app.use('/api/address',addressRouter)
+app.use('/api/login',userRouter)
   
 app.listen(PORT);

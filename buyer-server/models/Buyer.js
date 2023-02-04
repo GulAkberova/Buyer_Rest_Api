@@ -9,8 +9,8 @@ phoneNumber: {
     type: Number,
     required: true
 },
-buyerAdress: {
-    type:Schema.Types.ObjectId,
+buyerAddress: {
+    type:'ObjectId',
     ref:'Address'
 },
 isDeleted:{
