@@ -3,11 +3,30 @@ const { Schema, default: mongoose } = require("mongoose");
 
 
 const productSchema=Schema({
-    productName:String,
-    productPrice:Number,
-    ProductDescription:String,
-    orderDate:Date,
-    categoryId:{type:Schema.Types.ObjectId,ref:'Category'},
+    productName:{
+        type:String,
+        required:true
+    },
+    productPrice:{
+        type:Number,
+        required:true
+    },
+    ProductDescription:{
+        type:String,
+        required:true
+    },
+    orderDate:{
+        type:Date,
+        default:Date()
+    },
+    categoryId:{
+        type:Schema.Types.ObjectId,
+        ref:'Category'
+    },
+    buyerId:{
+        type:Schema.Types.ObjectId,
+        ref:'Buyer'
+    }
 
 })
 

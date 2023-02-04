@@ -3,23 +3,28 @@ const cors=require('cors')
 const { urlencoded } = require('express');
 const { default: mongoose } = require('mongoose');
 require("dotenv").config()
-
+const productRouter= require('./routes/ProductRouter')
+const buyerRouter= require('./routes/buyerRouter')
+const categoryRouter= require('./routes/categoryRouter')
+const addressRouter=require('./routes/AddressRouter')
+const app=express()
 
 const PORT = process.env.POST || 3000;
-const app=express()
-app.use(cors())
 app.use(express.json())
 app.use(urlencoded())
-app.use(function(req,res,next){
-    if(false){
-        res.status(401).json("Access Error")
-    }else{
-        next()
-    }
-})
+app.use(cors())
+
+// app.use(function(req,res,next){
+//     if(false){
+//         res.status(401).json("Access Error")
+//     }else{
+//         next()
+//     }
+// })
 
 const mongoDbUser = process.env.mongoDbUser;
 const mongoDbPassword = process.env.mongoDbPassword;
+mongoose.set('strictQuery', true)
 mongoose
   .connect(
     `mongodb+srv://${mongoDbUser}:${mongoDbPassword}@cluster0.oxil0us.mongodb.net/Buyer`
@@ -31,6 +36,9 @@ mongoose
     console.log("err", err);
   });
 
-  
+app.use('/api/product',productRouter) 
+app.use('/api/buyer',buyerRouter)
+app.use('/api/category',categoryRouter)
+app.use('/api/address',addressRouter)
   
 app.listen(PORT);
