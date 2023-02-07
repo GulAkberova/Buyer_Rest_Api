@@ -22,10 +22,12 @@ const userController={
         newUser.save(function(err,doc){
             if(!err){
                 let privateKey="ironmaiden";
-                let token=jwt.sign({username:newUser.username},privateKey,{
+                let token=jwt.sign({username:newUser.username},
+                    privateKey,{
                     algorithm:'HS256',
                     expiresIn:'10h'
-                });
+                }
+                );
                 res.json({'token':token})
             }else{
                 res.status(500).json(err)

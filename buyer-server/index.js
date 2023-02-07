@@ -9,6 +9,7 @@ const categoryRouter= require('./routes/categoryRouter')
 const addressRouter=require('./routes/AddressRouter')
 const userRouter=require('./routes/UserRouter')
 const app=express()
+// const checkjwt=require('./auth/auth')
 
 const PORT = process.env.POST || 3000;
 app.use(express.json())
@@ -42,5 +43,8 @@ app.use('/api/buyer',buyerRouter)
 app.use('/api/category',categoryRouter)
 app.use('/api/address',addressRouter)
 app.use('/api/login',userRouter)
+// app.get('/check',checkjwt, function(req,res,next){
+//   res.send('selam dunya')
+// })
   
 app.listen(PORT);
