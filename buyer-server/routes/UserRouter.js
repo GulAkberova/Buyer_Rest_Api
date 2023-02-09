@@ -4,6 +4,7 @@ const router=express.Router()
 
 router.get('/',userController.getAll)
 router.post('/',userController.getPost)
+router.post('/mail',userController.sendEmail)
 
 
 module.exports=router

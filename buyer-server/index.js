@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const { urlencoded } = require("express");
 const { default: mongoose } = require("mongoose");
-const nodemailer = require("nodemailer");
 require("dotenv").config();
 const productRouter = require("./routes/ProductRouter");
 const buyerRouter = require("./routes/buyerRouter");
@@ -49,37 +48,5 @@ app.use("/api/login", userRouter);
 //   res.send('selam dunya')
 // })
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: "gulkhanimag@code.edu.az", // generated ethereal user
-    pass: "3421558Gul", // generated ethereal password
-  },
-});
-
-const info = {
-  from: "kbrovagul0@gmail.com", // sender address
-  to: "webdevelopernicat@gmail.com", // list of receivers
-  subject: "Hello ✔", // Subject line
-  text: "Hello world?", // plain text body
-  html: "<b>Hello world?</b>", // html body
-};
-
-transporter.sendMail(info, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("email sent");
-  }
-});
-
-// console.log("Message sent: " + info.messageId);
-// console.log(info.accepted)
-// console.log(rejected)
-
-// main().catch(e=>console.log(e))
 
 app.listen(PORT);
